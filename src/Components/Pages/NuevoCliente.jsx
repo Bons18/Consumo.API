@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2'; // Importa SweetAlert2
 
-const NuevoClienteForm = () => {
+const NuevoClienteForm = ({ onAgregarCliente }) => {
     const [documentoCliente, setDocumentoCliente] = useState('');
     const [nombreCompleto, setNombreCompleto] = useState('');
     const [celular, setCelular] = useState('');
@@ -24,6 +24,11 @@ const NuevoClienteForm = () => {
             if (!response.ok) {
                 throw new Error('Error al crear cliente');
             }
+
+            const clienteCreado = await response.json();
+
+            // Llamamos a la función onAgregarCliente para actualizar la lista sin recargar
+            onAgregarCliente(clienteCreado);
 
             // Mostrar alerta de éxito
             Swal.fire({
@@ -52,8 +57,8 @@ const NuevoClienteForm = () => {
                 text: error.message,
                 background: '#f5f5f7',
                 color: '#333',
-                confirmButtonColor: '#dc3545',
-                confirmButtonText: 'Reintentar',
+                confirmButtonColor: '#ff3b30',
+                confirmButtonText: 'Aceptar',
                 customClass: {
                     popup: 'custom-alert',
                 },
@@ -62,52 +67,58 @@ const NuevoClienteForm = () => {
     };
 
     return (
-        <Container className="my-5 p-5" style={{ backgroundColor: '#ffffff', borderRadius: '20px', boxShadow: '0 2px 15px rgba(0, 0, 0, 0.1)' }}>
-            <h2 className="text-center mb-4" style={{ color: '#333', fontFamily: 'San Francisco, Arial, sans-serif' }}>Registrar Nuevo Cliente</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-4" controlId="formNombre">
-                    <Form.Label><strong>Nombre Completo:</strong></Form.Label>
-                    <Form.Control
-                        type="text"
-                        value={nombreCompleto}
-                        onChange={(e) => setNombreCompleto(e.target.value)}
-                        required
-                        placeholder="Ingresa el nombre completo"
-                        style={{ borderRadius: '15px', border: '1px solid #e0e0e0', padding: '15px', fontSize: '1rem', backgroundColor: '#f9f9f9' }}
-                    />
-                </Form.Group>
-                <Form.Group className="mb-4" controlId="formDocumento">
-                    <Form.Label><strong>Documento del Cliente:</strong></Form.Label>
+        <Container className="py-5">
+            <h2 className="text-center mb-4" style={{ fontWeight: '600', fontSize: '2.5rem', color: '#333' }}>
+                Nuevo Cliente
+            </h2>
+            <Form onSubmit={handleSubmit} className="p-4 rounded shadow" style={{ backgroundColor: '#fff', maxWidth: '600px', margin: '0 auto' }}>
+                <Form.Group controlId="documentoCliente" className="mb-3">
+                    <Form.Label>Documento de Identidad</Form.Label>
                     <Form.Control
                         type="text"
                         value={documentoCliente}
                         onChange={(e) => setDocumentoCliente(e.target.value)}
                         required
-                        placeholder="Ingresa el documento del cliente"
-                        style={{ borderRadius: '15px', border: '1px solid #e0e0e0', padding: '15px', fontSize: '1rem', backgroundColor: '#f9f9f9' }}
+                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
                     />
                 </Form.Group>
-                <Form.Group className="mb-4" controlId="formCelular">
-                    <Form.Label><strong>Celular:</strong></Form.Label>
+
+                <Form.Group controlId="nombreCompleto" className="mb-3">
+                    <Form.Label>Nombre Completo</Form.Label>
                     <Form.Control
-                        type="tel"
+                        type="text"
+                        value={nombreCompleto}
+                        onChange={(e) => setNombreCompleto(e.target.value)}
+                        required
+                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="celular" className="mb-3">
+                    <Form.Label>Celular</Form.Label>
+                    <Form.Control
+                        type="text"
                         value={celular}
                         onChange={(e) => setCelular(e.target.value)}
-                        placeholder="Ingresa el número de celular"
-                        style={{ borderRadius: '15px', border: '1px solid #e0e0e0', padding: '15px', fontSize: '1rem', backgroundColor: '#f9f9f9' }}
+                        required
+                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
                     />
                 </Form.Group>
-                <Form.Group className="mb-4" controlId="formFechaNacimiento">
-                    <Form.Label><strong>Fecha de Nacimiento:</strong></Form.Label>
+
+                <Form.Group controlId="fechaNacimiento" className="mb-3">
+                    <Form.Label>Fecha de Nacimiento</Form.Label>
                     <Form.Control
                         type="date"
                         value={fechaNacimiento}
                         onChange={(e) => setFechaNacimiento(e.target.value)}
                         required
-                        style={{ borderRadius: '15px', border: '1px solid #e0e0e0', padding: '15px', fontSize: '1rem', backgroundColor: '#f9f9f9' }}
+                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
                     />
                 </Form.Group>
-                <Button type="submit" variant="primary" className="w-100" style={{ borderRadius: '25px', fontSize: '1.1rem', backgroundColor: '#007aff', border: 'none', padding: '10px' }}>Registrar Cliente</Button>
+
+                <Button variant="primary" type="submit" className="w-100" style={{ borderRadius: '8px' }}>
+                    Registrar Cliente
+                </Button>
             </Form>
         </Container>
     );

@@ -82,9 +82,15 @@ const Clientes = () => {
         }
     };
 
+    // Función para agregar un nuevo cliente al estado
+    const handleAgregarCliente = (nuevoCliente) => {
+        setClientes([...clientes, nuevoCliente]);
+    };
+
     return (
         <Container fluid className="py-5" style={{ backgroundColor: '#f2f2f2', minHeight: '100vh' }}>
-            <NuevoClienteForm />
+            {/* Pasamos la función handleAgregarCliente a NuevoClienteForm */}
+            <NuevoClienteForm onAgregarCliente={handleAgregarCliente} />
             <h2 className="text-center mb-4" style={{ fontWeight: '600', fontSize: '2.5rem', color: '#333' }}>Clientes</h2>
             {error && <p className="text-danger">{error}</p>}
             <Table striped bordered hover className="mt-4 rounded shadow" style={{ backgroundColor: '#fff' }}>
