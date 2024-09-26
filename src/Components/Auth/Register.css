@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('C:/Users/braya/Desktop/API/my-app/public/imagen.jpg');
+    background-image: url('public\imagen.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
