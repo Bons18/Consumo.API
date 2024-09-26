@@ -1,0 +1,77 @@
+body {
+    background-color: #f7f7f7; /* Color de fondo general */
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    border: none; /* Sin borde para un aspecto más limpio */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease; /* Transición para el efecto de hover */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+button {
+    background-color: #007aff; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+h1, h2 {
+    color: #333; /* Color de los títulos */
+}
+
+h5 {
+    color: #007aff; /* Color de los subtítulos */
+}
+
+.text-muted {
+    color: #666; /* Color más claro para el texto secundario */
+}
+
+/* Estilo de los iconos */
+.position-absolute {
+    z-index: 1; /* Asegurar que los iconos estén por encima */
+}
+
+.d-flex {
+    align-items: center; /* Centrar verticalmente el contenido */
+}
+
+/* Espaciado */
+.mb-4 {
+    margin-bottom: 2rem; /* Espaciado adicional */
+}
+
+/* Mejorar el estilo del formulario */
+input, textarea {
+    background-color: #f9f9f9; /* Fondo del input */
+    border: 1px solid #e0e0e0; /* Borde gris claro */
+    border-radius: 25px; /* Bordes redondeados para inputs */
+    transition: border-color 0.3s ease; /* Transición de color de borde */
+}
+
+input:focus, textarea:focus {
+    border-color: #007aff; /* Borde azul al enfocarse */
+    box-shadow: 0 0 5px rgba(0, 122, 255, 0.5); /* Sombra azul al enfocarse */
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Ajustar tamaño del título en móviles */
+    }
+
+    .card {
+        padding: 20px; /* Menos padding en móviles */
+    }
+}

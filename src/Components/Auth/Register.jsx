@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import './Register.css';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Register = () => {
             title: 'Registro exitoso',
             text: "Tu cuenta ha sido creada con éxito.",
             icon: 'success',
-            confirmButtonColor: '#007aff',
+            confirmButtonColor: '#0d6efd', // Color del botón de confirmación
             allowOutsideClick: false
         }).then(() => {
             navigate("/Login", { replace: true });
@@ -32,9 +33,9 @@ const Register = () => {
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px' }}>
+            <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px', border: 'none' }}> {/* Se eliminó el borde */}
                 <Card.Body className="p-5">
-                    <h3 className="text-center mb-4 fw-bold">Crea una Cuenta</h3>
+                    <h3 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Crea una Cuenta</h3>
                     <p className="text-center text-muted mb-4">Regístrate para empezar</p>
                     <Form onSubmit={onRegister}>
                         {/* Campo de nombre con icono */}
@@ -92,7 +93,7 @@ const Register = () => {
                         </Form.Group>
 
                         <Button 
-                            variant="success" 
+                            variant="primary"  // Cambia a 'primary' para usar el color #0d6efd
                             type="submit" 
                             className="w-100 rounded-pill py-2 shadow"
                             style={{ fontWeight: 'bold' }}
@@ -102,7 +103,7 @@ const Register = () => {
                     </Form>
                     <p className="text-center text-muted mt-3">
                         ¿Ya tienes una cuenta? 
-                        <a href="/Login" className="text-success" style={{ fontWeight: 'bold' }}> Inicia sesión</a>
+                        <a href="/Login" className="text-primary" style={{ fontWeight: 'bold' }}> Inicia sesión</a>
                     </p>
                 </Card.Body>
             </Card>

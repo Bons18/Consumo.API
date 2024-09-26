@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import './Login.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -74,7 +75,7 @@ const Login = () => {
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px' }}>
                 <Card.Body className="p-5">
-                    <h3 className="text-center mb-4 fw-bold">Bienvenido</h3>
+                    <h3 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Bienvenido</h3>
                     <p className="text-center text-muted mb-4">Inicia sesión para continuar</p>
                     <Form onSubmit={onLogin}>
                         <Form.Group className="mb-4" controlId="formCorreoLogin">

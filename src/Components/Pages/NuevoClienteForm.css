@@ -1,0 +1,42 @@
+.nuevo-cliente-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-custom {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border-radius: 8px;
+    border-color: #ccc;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff; /* Cambia el color al hacer foco */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-custom {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #007bff; /* Color de fondo del botón */
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3; /* Color al pasar el ratón */
+}
+
+.form-label i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+    color: #007bff; /* Color del ícono, puedes cambiarlo si quieres */
+}

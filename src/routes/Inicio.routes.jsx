@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { UseLoginContext } from "../Components/Context/LoginContext";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Asegúrate de importar Font Awesome
 
 const InicioRouters = () => {
     const { login, isLogin, onLogOut } = useContext(UseLoginContext);
@@ -45,19 +46,20 @@ const InicioRouters = () => {
 
     return (
         <>
-            <Navbar expand="lg" style={{ backgroundColor: '#fff', boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)', padding: '10px 20px' }}>
+            <Navbar expand="lg" className="bg-light shadow-sm py-3">
                 <Container>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
                             <img
-                                src={isLogin ? `https://unavatar.io/github/37t?fallback=https://avatars.githubusercontent.com/u/66378906?v=4/${login.nombre}` : "https://cdn-icons-png.flaticon.com/512/3781/3781699.png"}
+                                // Aquí se ha reemplazado el logo
+                                src="https://cdn.pixabay.com/photo/2023/09/22/15/45/panda-8269336_960_720.png"
                                 width="40"
                                 height="40"
-                                style={{ borderRadius: '50%', marginRight: '10px', transition: 'transform 0.3s' }}
+                                className="rounded-circle me-2"
                                 alt="Logo"
                             />
-                            <span style={{ fontWeight: '600', fontSize: '1.5rem', color: '#333', transition: 'color 0.3s' }}>
+                            <span className="fw-bold fs-5 text-dark">
                                 {isLogin ? login.nombre : 'Bienvenido'}
                             </span>
                         </Navbar.Brand>
@@ -71,16 +73,23 @@ const InicioRouters = () => {
                                         key={index} 
                                         as={Link} 
                                         to={path} 
-                                        style={{
-                                            fontWeight: '500', 
-                                            color: '#007aff', 
-                                            margin: '0 10px', 
-                                            transition: 'color 0.3s',
-                                        }}
+                                        className="text-primary mx-2 fw-semibold"
                                         onMouseEnter={e => e.target.style.color = '#0056b3'}
                                         onMouseLeave={e => e.target.style.color = '#007aff'}
                                     >
-                                        {titles[index]}
+                                        {titles[index] === 'Acceder' && (
+                                            <>
+                                                <i className="fas fa-sign-in-alt me-1"></i>
+                                                {titles[index]}
+                                            </>
+                                        )}
+                                        {titles[index] === 'Registro' && (
+                                            <>
+                                                <i className="fas fa-user-plus me-1"></i>
+                                                {titles[index]}
+                                            </>
+                                        )}
+                                        {titles[index] !== 'Acceder' && titles[index] !== 'Registro' && titles[index]}
                                     </Nav.Link>
                                 );
                             })}
@@ -89,12 +98,7 @@ const InicioRouters = () => {
                             <Button 
                                 variant="outline-danger" 
                                 onClick={handleLogout} 
-                                style={{ 
-                                    borderRadius: '25px', 
-                                    padding: '5px 20px', 
-                                    border: '1px solid #ff3b30', 
-                                    transition: 'background-color 0.3s, color 0.3s' 
-                                }}
+                                className="rounded-pill py-2 px-3 border-danger"
                             >
                                 Salir
                             </Button>
@@ -102,7 +106,9 @@ const InicioRouters = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Outlet />
+            <div className="min-vh-100">
+                <Outlet />
+            </div>
         </>
     );
 };
