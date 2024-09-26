@@ -111,7 +111,7 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                 </Button>
 
                 <Button 
-                    variant="success" // Color verde para el botón "Ver API"
+                    variant="warning" // Color amarillo para el botón "Ver API"
                     className="mt-3 w-100" 
                     onClick={verAPI} 
                 >
