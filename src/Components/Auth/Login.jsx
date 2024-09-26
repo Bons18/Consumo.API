@@ -50,7 +50,7 @@ const Login = () => {
                     content: 'alert-content',
                 },
             }).then(() => {
-                navigate("/Dashboard", { replace: true });
+                navigate("/Clientes", { replace: true });
             });
         } else {
             Swal.fire({
