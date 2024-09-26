@@ -25,16 +25,8 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
             }
 
             const clienteCreado = await response.json();
-<<<<<<< HEAD
             onAgregarCliente(clienteCreado);
 
-=======
-
-            // Llamamos a la función onAgregarCliente para actualizar la lista sin recargar
-            onAgregarCliente(clienteCreado);
-
-            // Mostrar alerta de éxito
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
             Swal.fire({
                 icon: 'success',
                 title: 'Cliente Registrado',
@@ -59,27 +51,14 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                 color: '#333',
                 confirmButtonColor: '#ff3b30',
                 confirmButtonText: 'Aceptar',
-<<<<<<< HEAD
-=======
-                customClass: {
-                    popup: 'custom-alert',
-                },
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
             });
         }
     };
 
     return (
         <Container className="py-5">
-<<<<<<< HEAD
             <h2 className="text-center mb-4 nuevo-cliente-title">Nuevo Cliente</h2>
             <Form onSubmit={handleSubmit} className="p-4 rounded shadow form-custom">
-=======
-            <h2 className="text-center mb-4" style={{ fontWeight: '600', fontSize: '2.5rem', color: '#333' }}>
-                Nuevo Cliente
-            </h2>
-            <Form onSubmit={handleSubmit} className="p-4 rounded shadow" style={{ backgroundColor: '#fff', maxWidth: '600px', margin: '0 auto' }}>
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
                 <Form.Group controlId="documentoCliente" className="mb-3">
                     <Form.Label>Documento de Identidad</Form.Label>
                     <Form.Control
@@ -87,11 +66,7 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                         value={documentoCliente}
                         onChange={(e) => setDocumentoCliente(e.target.value)}
                         required
-<<<<<<< HEAD
                         placeholder="Ingrese el documento de identidad"
-=======
-                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
                     />
                 </Form.Group>
 
@@ -102,11 +77,7 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                         value={nombreCompleto}
                         onChange={(e) => setNombreCompleto(e.target.value)}
                         required
-<<<<<<< HEAD
                         placeholder="Ingrese el nombre completo"
-=======
-                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
                     />
                 </Form.Group>
 
@@ -117,11 +88,7 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                         value={celular}
                         onChange={(e) => setCelular(e.target.value)}
                         required
-<<<<<<< HEAD
                         placeholder="Ingrese el número de celular"
-=======
-                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
                     />
                 </Form.Group>
 
@@ -132,18 +99,10 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                         value={fechaNacimiento}
                         onChange={(e) => setFechaNacimiento(e.target.value)}
                         required
-<<<<<<< HEAD
                     />
                 </Form.Group>
 
                 <Button variant="primary" type="submit" className="w-100 btn-custom">
-=======
-                        style={{ borderRadius: '8px', borderColor: '#ccc' }}
-                    />
-                </Form.Group>
-
-                <Button variant="primary" type="submit" className="w-100" style={{ borderRadius: '8px' }}>
->>>>>>> 87af38d2a808abaeacae0ec38f6988a8504b2745
                     Registrar Cliente
                 </Button>
             </Form>
