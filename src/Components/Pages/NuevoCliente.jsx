@@ -55,6 +55,10 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
         }
     };
 
+    const verAPI = () => {
+        window.open('https://bank-api-ukci.onrender.com/', '_blank'); // Abre la URL en una nueva pestaña
+    };
+
     return (
         <Container className="py-5">
             <h2 className="text-center mb-4 nuevo-cliente-title">Nuevo Cliente</h2>
@@ -104,6 +108,14 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
 
                 <Button variant="primary" type="submit" className="w-100 btn-custom">
                     Registrar Cliente
+                </Button>
+
+                <Button 
+                    variant="success" // Color verde para el botón "Ver API"
+                    className="mt-3 w-100" 
+                    onClick={verAPI} 
+                >
+                    Ver API
                 </Button>
             </Form>
         </Container>
