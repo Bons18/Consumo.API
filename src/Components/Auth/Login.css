@@ -4,8 +4,9 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #333;
-    height: 100vh;
+    min-height: 100vh; 
     margin: 0;
 }
 
@@ -36,7 +37,7 @@ button:hover, a:hover {
 
 .card {
     background-color: white;
-    opacity: 0.9;
+    /* opacity: 0.9; */ /* Comentado para mejorar la visibilidad */
     border-radius: 12px;
     padding: 20px;
     max-width: 400px;
@@ -73,4 +74,11 @@ button:hover, a:hover {
 
 .text-muted a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin: 20px; /* Ajustes para pantallas más pequeñas */
+        width: auto; /* Permitir que la tarjeta use más espacio si es necesario */
+    }
 }

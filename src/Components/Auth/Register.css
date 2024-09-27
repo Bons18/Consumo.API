@@ -4,6 +4,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Fija la imagen de fondo */
     color: #333;
     height: 100vh;
     margin: 0;

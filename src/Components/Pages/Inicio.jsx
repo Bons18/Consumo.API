@@ -81,7 +81,8 @@ const Inicio = () => {
                                 </p>
                                 <Button 
                                     variant="primary" 
-                                    href="/asesor" 
+                                    href="https://wa.me/34123456789" // Reemplaza con el número de teléfono adecuado
+                                    target="_blank"
                                     className="px-4 py-2 fw-bold"
                                     aria-label="Consultar a un asesor"
                                 >

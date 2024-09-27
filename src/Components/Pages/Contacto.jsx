@@ -1,8 +1,103 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Card } from 'react-bootstrap';
 import { FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
 import { BsFillTelephoneFill, BsClockFill } from 'react-icons/bs';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Contacto.css'; // Estilos personalizados
+
+const Mapa = () => {
+    const [map, setMap] = useState(null);
+    const [autocomplete, setAutocomplete] = useState(null);
+    const [searchInput, setSearchInput] = useState('');
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBjhJlV62iOik3qu-JOKA5Jt_6rq19mR4w&libraries=places`;
+        script.async = true;
+        script.onload = () => {
+            const mapInstance = new window.google.maps.Map(document.getElementById('map'), {
+                center: { lat: 37.7749, lng: -122.4194 }, // San Francisco
+                zoom: 12,
+            });
+            setMap(mapInstance);
+            
+            const input = document.getElementById('search-input');
+            const autocompleteInstance = new window.google.maps.places.Autocomplete(input);
+            autocompleteInstance.bindTo('bounds', mapInstance);
+
+            autocompleteInstance.addListener('place_changed', () => {
+                const place = autocompleteInstance.getPlace();
+                if (place.geometry) {
+                    mapInstance.setCenter(place.geometry.location);
+                    mapInstance.setZoom(15); // Aumenta el zoom al hacer una búsqueda
+                    new window.google.maps.Marker({
+                        position: place.geometry.location,
+                        map: mapInstance,
+                    });
+                }
+            });
+
+            setAutocomplete(autocompleteInstance);
+        };
+        document.head.appendChild(script);
+
+        return () => {
+            document.head.removeChild(script); // Limpia el script al desmontar
+        };
+    }, []);
+
+    // Función para buscar al presionar "Enter"
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Previene el comportamiento por defecto del formulario
+            const place = autocomplete.getPlace();
+            if (place && place.geometry) {
+                map.setCenter(place.geometry.location);
+                map.setZoom(15);
+                new window.google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                });
+            } else {
+                // Realiza una búsqueda manual si no hay lugar seleccionado
+                const geocoder = new window.google.maps.Geocoder();
+                geocoder.geocode({ address: searchInput }, (results, status) => {
+                    if (status === 'OK' && results[0]) {
+                        map.setCenter(results[0].geometry.location);
+                        map.setZoom(15);
+                        new window.google.maps.Marker({
+                            position: results[0].geometry.location,
+                            map: map,
+                        });
+                    } else {
+                        alert('No se pudo encontrar la ubicación: ' + status);
+                    }
+                });
+            }
+        }
+    };
+
+    const handleInputChange = (e) => {
+        setSearchInput(e.target.value);
+    };
+
+    return (
+        <div>
+            <h5 className="fw-bold">Ubicación</h5>
+            <input
+                id="search-input"
+                type="text"
+                placeholder="Buscar ubicación"
+                className="form-control mb-3"
+                style={{ borderRadius: '10px', padding: '10px' }}
+                onKeyPress={handleKeyPress} // Agrega el manejador de eventos
+                value={searchInput}
+                onChange={handleInputChange} // Manejador de cambio para el input
+            />
+            <div id="map" style={{ width: '100%', height: '250px', borderRadius: '10px' }}></div>
+        </div>
+    );
+};
 
 const Contacto = () => {
     const [formData, setFormData] = useState({
@@ -32,9 +127,9 @@ const Contacto = () => {
     };
 
     return (
-        <Container fluid className="my-6" style={{ backgroundColor: '#f7f7f7', minHeight: '100vh' }}>
-            <Row className="justify-content-center align-items-center" style={{ height: '100vh' }}>
-                <Col md={8} lg={6} className="mt-2"> {/* Cambiado a mt-2 para menos espacio */}
+        <Container fluid className="my-0" style={{ backgroundColor: '#f7f7f7', minHeight: '100vh' }}>
+            <Row className="justify-content-center align-items-center" style={{ marginTop: '0' }}>
+                <Col md={8} lg={6} className="mt-2">
                     <Card className="shadow p-4 rounded" style={{ backgroundColor: 'white', borderRadius: '20px' }}>
                         <h1 className="text-center mb-4 fw-bold" style={{ color: '#333', fontSize: '2.5rem' }}>Contacto</h1>
                         {success && <Alert variant="success" className="text-center">¡Mensaje enviado exitosamente!</Alert>}
@@ -106,31 +201,50 @@ const Contacto = () => {
                 </Col>
             </Row>
 
-            <Row className="mt-5">
-                <Col md={8} lg={6} className="mx-auto text-center">
+            {/* Sección de Información Adicional */}
+            <Row className="mt-5 text-center">
+                <Col md={8} lg={6} className="mx-auto">
                     <h2 className="fw-bold" style={{ color: '#333' }}>¿Por qué contactarnos?</h2>
                     <p className="text-muted">
                         Nuestro equipo está aquí para ayudarte. Ya sea que tengas preguntas sobre nuestros servicios, sugerencias o necesites asistencia, estamos disponibles para atenderte.
                     </p>
 
-                    <div className="d-flex justify-content-around mb-4">
-                        <div className="d-flex align-items-center">
+                    <div className="d-flex flex-column flex-md-row justify-content-around mb-4">
+                        <div className="d-flex align-items-center mb-3 mb-md-0">
                             <BsFillTelephoneFill className="fs-4 text-primary me-2" />
                             <div>
-                                <h5 className="fw-bold">Información de Contacto</h5>
-                                <p>Email: soporte@empresa.com</p>
-                                <p>Teléfono: +1 (234) 567-890</p>
+                                <h5 className="fw-bold">Teléfono</h5>
+                                <p className="text-muted">+1 234 567 890</p>
                             </div>
                         </div>
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex align-items-center mb-3 mb-md-0">
                             <BsClockFill className="fs-4 text-primary me-2" />
                             <div>
-                                <h5 className="fw-bold">Horarios</h5>
-                                <p>Lunes a Viernes: 9:00 AM - 5:00 PM</p>
-                                <p>Sábado: 10:00 AM - 2:00 PM</p>
+                                <h5 className="fw-bold">Horario</h5>
+                                <p className="text-muted">Lunes a Viernes, 9am - 5pm</p>
                             </div>
                         </div>
                     </div>
+
+                    <h5 className="fw-bold">Síguenos en nuestras redes</h5>
+                    <div className="d-flex justify-content-center">
+                        <a href="#" className="text-decoration-none me-4">
+                            <FaFacebook size={30} />
+                        </a>
+                        <a href="#" className="text-decoration-none me-4">
+                            <FaTwitter size={30} />
+                        </a>
+                        <a href="#" className="text-decoration-none">
+                            <FaInstagram size={30} />
+                        </a>
+                    </div>
+                </Col>
+            </Row>
+
+            {/* Mapa */}
+            <Row className="mt-5">
+                <Col md={8} lg={6} className="mx-auto">
+                    <Mapa />
                 </Col>
             </Row>
         </Container>

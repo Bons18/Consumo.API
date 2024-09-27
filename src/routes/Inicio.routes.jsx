@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { UseLoginContext } from "../Components/Context/LoginContext";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
@@ -7,7 +7,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // Asegúrate de importa
 
 const InicioRouters = () => {
     const { login, isLogin, onLogOut } = useContext(UseLoginContext);
-    
+    const [navExpanded, setNavExpanded] = useState(false);
+
     const handleLogout = () => {
         Swal.fire({
             title: '¿Quieres cerrar sesión?',
@@ -44,15 +45,21 @@ const InicioRouters = () => {
         });
     };
 
+    const handleNavItemClick = () => {
+        setNavExpanded(false); // Ocultar la barra de navegación
+    };
+
     return (
         <>
-            <Navbar expand="lg" className="bg-light shadow-sm py-3">
-                <Container>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar expanded={navExpanded} expand="lg" className="bg-light shadow-sm py-3 custom-navbar">
+                <Container fluid>
+                    <Navbar.Toggle 
+                        aria-controls="basic-navbar-nav" 
+                        onClick={() => setNavExpanded(prev => !prev)} 
+                    />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
                             <img
-                                // Aquí se ha reemplazado el logo
                                 src="https://cdn.pixabay.com/photo/2023/09/22/15/45/panda-8269336_960_720.png"
                                 width="40"
                                 height="40"
@@ -64,32 +71,27 @@ const InicioRouters = () => {
                             </span>
                         </Navbar.Brand>
                         <Nav className="ms-auto">
-                            {['/', '/Servicio', '/Contacto', '/Login', '/Register', '/Clientes', '/Dashboard'].map((path, index) => {
-                                const titles = ['Inicio', 'Servicio', 'Contacto', 'Acceder', 'Registro', 'Clientes', 'Dashboard'];
-                                const isActive = path === '/Login' || path === '/Register' ? !isLogin : isLogin;
-                                
+                            {[ 
+                                { path: '/', title: 'Inicio', icon: 'fas fa-home' },
+                                { path: '/Servicio', title: 'Servicio', icon: 'fas fa-cogs' },
+                                { path: '/Contacto', title: 'Contacto', icon: 'fas fa-envelope' },
+                                { path: '/Clientes', title: 'Clientes', icon: 'fas fa-users' },
+                                { path: '/Dashboard', title: 'Dashboard', icon: 'fas fa-tachometer-alt' },
+                                { path: '/Login', title: 'Acceder', icon: 'fas fa-sign-in-alt', condition: !isLogin },
+                                { path: '/Register', title: 'Registro', icon: 'fas fa-user-plus', condition: !isLogin }
+                            ].map((item, index) => {
+                                const isActive = item.condition === undefined ? isLogin : item.condition;
+
                                 return isActive && (
                                     <Nav.Link 
                                         key={index} 
                                         as={Link} 
-                                        to={path} 
+                                        to={item.path} 
                                         className="text-primary mx-2 fw-semibold"
-                                        onMouseEnter={e => e.target.style.color = '#0056b3'}
-                                        onMouseLeave={e => e.target.style.color = '#007aff'}
+                                        onClick={handleNavItemClick} // Ocultar al hacer clic
                                     >
-                                        {titles[index] === 'Acceder' && (
-                                            <>
-                                                <i className="fas fa-sign-in-alt me-1"></i>
-                                                {titles[index]}
-                                            </>
-                                        )}
-                                        {titles[index] === 'Registro' && (
-                                            <>
-                                                <i className="fas fa-user-plus me-1"></i>
-                                                {titles[index]}
-                                            </>
-                                        )}
-                                        {titles[index] !== 'Acceder' && titles[index] !== 'Registro' && titles[index]}
+                                        <i className={`${item.icon} me-1`}></i>
+                                        {item.title}
                                     </Nav.Link>
                                 );
                             })}
@@ -98,8 +100,10 @@ const InicioRouters = () => {
                             <Button 
                                 variant="outline-danger" 
                                 onClick={handleLogout} 
-                                className="rounded-pill py-2 px-3 border-danger"
+                                className="rounded-pill py-2 px-3 border-danger d-flex align-items-center position-relative overflow-hidden transition-all"
+                                style={{ fontWeight: 'bold', transition: 'transform 0.3s' }}
                             >
+                                <i className="fas fa-sign-out-alt me-2"></i>
                                 Salir
                             </Button>
                         )}
