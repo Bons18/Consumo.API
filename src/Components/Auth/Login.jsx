@@ -3,7 +3,7 @@ import useHook from "./Hooks/Hooks";
 import { UseLoginContext } from "../Context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
-import { FaEnvelope, FaLock, FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa"; // Agregar íconos para ver/ocultar
+import { FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa"; // Importa el ícono aquí
 import Swal from 'sweetalert2';
 import './Login.css';
 
@@ -15,7 +15,6 @@ const Login = () => {
 
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
-    const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
 
     const onLogin = (e) => {
         e.preventDefault();
@@ -76,8 +75,9 @@ const Login = () => {
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px' }}>
                 <Card.Body className="p-5">
+                    {/* Aquí se agrega el ícono */}
                     <div className="text-center mb-3">
-                        <FaUserCircle size={60} color="#0d6efd" />
+                        <FaUserCircle size={60} color="#0d6efd" /> {/* Tamaño y color del ícono */}
                     </div>
                     <h3 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Bienvenido</h3>
                     <p className="text-center text-muted mb-4">Inicia sesión para continuar</p>
@@ -106,19 +106,13 @@ const Login = () => {
                                     <FaLock className="text-primary" />
                                 </InputGroup.Text>
                                 <Form.Control
-                                    type={showPassword ? "text" : "password"} // Cambia el tipo según el estado
+                                    type="password"
                                     placeholder="Introduce tu contraseña"
                                     value={contrasena}
                                     onChange={(e) => setContrasena(e.target.value)}
                                     required
                                     className="rounded-pill border-0 shadow-sm"
                                 />
-                                <Button
-                                    variant="outline-secondary"
-                                    onClick={() => setShowPassword(!showPassword)} // Alternar visibilidad
-                                >
-                                    {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Cambia el ícono */}
-                                </Button>
                             </InputGroup>
                         </Form.Group>
 
