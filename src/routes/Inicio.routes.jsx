@@ -53,17 +53,18 @@ const InicioRouters = () => {
         <>
             <Navbar expanded={navExpanded} expand="lg" className="bg-light shadow-sm py-3 custom-navbar">
                 <Container fluid>
-                    <Navbar.Toggle 
-                        aria-controls="basic-navbar-nav" 
-                        onClick={() => setNavExpanded(prev => !prev)} 
+                    <Navbar.Toggle
+                        aria-controls="basic-navbar-nav"
+                        onClick={() => setNavExpanded(prev => !prev)}
                     />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
                             <img
-                                src="https://cdn.pixabay.com/photo/2023/09/22/15/45/panda-8269336_960_720.png"
+                                src="https://cdn-icons-png.flaticon.com/512/660/660611.png"
                                 width="40"
                                 height="40"
-                                className="rounded-circle me-2"
+                                /*className="rounded-circle me-2" */
+                                className="me-2"
                                 alt="Logo"
                             />
                             <span className="fw-bold fs-5 text-dark">
@@ -71,7 +72,7 @@ const InicioRouters = () => {
                             </span>
                         </Navbar.Brand>
                         <Nav className="ms-auto">
-                            {[ 
+                            {[
                                 { path: '/', title: 'Inicio', icon: 'fas fa-home' },
                                 { path: '/Servicio', title: 'Servicio', icon: 'fas fa-cogs' },
                                 { path: '/Contacto', title: 'Contacto', icon: 'fas fa-envelope' },
@@ -83,10 +84,10 @@ const InicioRouters = () => {
                                 const isActive = item.condition === undefined ? isLogin : item.condition;
 
                                 return isActive && (
-                                    <Nav.Link 
-                                        key={index} 
-                                        as={Link} 
-                                        to={item.path} 
+                                    <Nav.Link
+                                        key={index}
+                                        as={Link}
+                                        to={item.path}
                                         className="text-primary mx-2 fw-semibold"
                                         onClick={handleNavItemClick} // Ocultar al hacer clic
                                     >
@@ -97,9 +98,9 @@ const InicioRouters = () => {
                             })}
                         </Nav>
                         {isLogin && (
-                            <Button 
-                                variant="outline-danger" 
-                                onClick={handleLogout} 
+                            <Button
+                                variant="outline-danger"
+                                onClick={handleLogout}
                                 className="rounded-pill py-2 px-3 border-danger d-flex align-items-center position-relative overflow-hidden transition-all"
                                 style={{ fontWeight: 'bold', transition: 'transform 0.3s' }}
                             >

@@ -2,7 +2,7 @@ import { useState } from "react";
 import useHook from "./Hooks/Hooks";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
-import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa"; // Se añade FaUserCircle para el icono superior
 import Swal from 'sweetalert2';
 import './Register.css';
 
@@ -23,7 +23,7 @@ const Register = () => {
             title: 'Registro exitoso',
             text: "Tu cuenta ha sido creada con éxito.",
             icon: 'success',
-            confirmButtonColor: '#0d6efd', // Color del botón de confirmación
+            confirmButtonColor: '#0d6efd',
             allowOutsideClick: false
         }).then(() => {
             navigate("/Login", { replace: true });
@@ -33,8 +33,12 @@ const Register = () => {
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px', border: 'none' }}> {/* Se eliminó el borde */}
+            <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px', border: 'none' }}>
                 <Card.Body className="p-5">
+                    {/* Icono de usuario encima del título */}
+                    <div className="d-flex justify-content-center mb-4">
+                        <FaUserCircle size={50} className="text-primary" />
+                    </div>
                     <h3 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Crea una Cuenta</h3>
                     <p className="text-center text-muted mb-4">Regístrate para empezar</p>
                     <Form onSubmit={onRegister}>
@@ -93,7 +97,7 @@ const Register = () => {
                         </Form.Group>
 
                         <Button 
-                            variant="primary"  // Cambia a 'primary' para usar el color #0d6efd
+                            variant="primary" 
                             type="submit" 
                             className="w-100 rounded-pill py-2 shadow"
                             style={{ fontWeight: 'bold' }}

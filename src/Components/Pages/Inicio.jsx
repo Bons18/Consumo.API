@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import { FaChevronRight, FaShieldAlt, FaMoneyBillWave, FaPiggyBank, FaChartLine, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-import './inicio.css'; // Asegúrate de tener este archivo con los estilos
+import { FaChevronRight, FaShieldAlt, FaMoneyBillWave, FaPiggyBank, FaChartLine, FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { BsTwitterX } from "react-icons/bs"; 
+import './inicio.css'; 
 
 const ServiceCard = ({ icon: Icon, title, description }) => (
     <Col xs={12} md={4} className="mb-4">
@@ -18,7 +19,6 @@ const ServiceCard = ({ icon: Icon, title, description }) => (
 const Inicio = () => {
     return (
         <div className="py bg-light">
-            {/* Hero Section */}
             <Container fluid className="text-center py-5 bg-primary text-white">
                 <Row className="justify-content-center">
                     <Col md={8}>
@@ -48,12 +48,10 @@ const Inicio = () => {
                     </Col>
                 </Row>
             </Container>
-
-            {/* Services Section */}
             <Container fluid className="py-5">
                 <h2 className="text-center mb-5 text-primary fw-bold">Nuestros Servicios Principales</h2>
                 <Row>
-                    {[
+                    {[ 
                         { icon: FaShieldAlt, title: "Seguridad Garantizada", description: "Protegemos sus activos con los más altos estándares de seguridad del sector." },
                         { icon: FaMoneyBillWave, title: "Préstamos Personalizados", description: "Ofrecemos soluciones de financiamiento adaptadas a sus necesidades específicas." },
                         { icon: FaPiggyBank, title: "Ahorro Inteligente", description: "Maximice sus ahorros con nuestras cuentas de alto rendimiento y asesoramiento experto." },
@@ -67,8 +65,6 @@ const Inicio = () => {
                     ))}
                 </Row>
             </Container>
-
-            {/* Investment Section */}
             <Container fluid className="py-5 bg-light">
                 <Row className="justify-content-center">
                     <Col md={10}>
@@ -81,7 +77,7 @@ const Inicio = () => {
                                 </p>
                                 <Button 
                                     variant="primary" 
-                                    href="https://wa.me/34123456789" // Reemplaza con el número de teléfono adecuado
+                                    href="https://wa.me/34123456789" 
                                     target="_blank"
                                     className="px-4 py-2 fw-bold"
                                     aria-label="Consultar a un asesor"
@@ -104,8 +100,6 @@ const Inicio = () => {
                     </Col>
                 </Row>
             </Container>
-
-            {/* CTA Section */}
             <Container fluid className="text-center py-5 bg-primary text-white">
                 <Row className="justify-content-center">
                     <Col md={8}>
@@ -124,20 +118,18 @@ const Inicio = () => {
                     </Col>
                 </Row>
             </Container>
-
-            {/* Footer */}
             <footer className="bg-dark text-white py-4 mt-auto">
                 <Container>
                     <Row>
                         <Col className="text-center">
                             <p className="mb-0">
-                                &copy; 2023 Banco Confianza. Todos los derechos reservados.
+                                &copy; 2024 Banco Confianza. Todos los derechos reservados.
                                 <br />
                                 <a href="/politicas" className="text-white">Política de privacidad</a> | Entidad regulada por la Superintendencia de Banca y Seguros.
                             </p>
                             <div className="social-icons">
                                 <a href="https://facebook.com"><FaFacebookF className="text-white" /></a>
-                                <a href="https://twitter.com"><FaTwitter className="text-white" /></a>
+                                <a href="https://x.com"><BsTwitterX className="text-white" /></a> 
                                 <a href="https://instagram.com"><FaInstagram className="text-white" /></a>
                             </div>
                         </Col>
