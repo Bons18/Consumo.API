@@ -77,7 +77,11 @@ const Inicio = () => {
                                 </p>
                                 <Button 
                                     variant="primary" 
+<<<<<<< HEAD
                                     href="https://wa.me/34123456789" 
+=======
+                                    href="https://wa.me/+573044570592" // Reemplaza con el número de teléfono adecuado
+>>>>>>> 6e29ad316d6f6e8fcc3b1e899beca8b89b7a7ef7
                                     target="_blank"
                                     className="px-4 py-2 fw-bold"
                                     aria-label="Consultar a un asesor"
