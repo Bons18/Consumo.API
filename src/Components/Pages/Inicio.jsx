@@ -39,7 +39,7 @@ const Inicio = () => {
             >
                 <Row className="justify-content-center">
                     <Col md={8}>
-                        <h1 className="mb-4 fw-bold">Bienvenido a Banco Confianza</h1>
+                        <h1 className="mb-4 fw-bold">Bienvenido a Bancorazón</h1>
                         <p className="lead mb-4">
                             Su socio financiero de confianza para un futuro seguro y próspero. 
                             Descubra nuestras soluciones bancarias personalizadas para cumplir sus sueños financieros.
