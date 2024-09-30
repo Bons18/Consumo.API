@@ -1,6 +1,5 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('/imagen.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -28,16 +27,15 @@ h3 {
 }
 
 button, input, a {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Transición suave */
 }
 
 button:hover, a:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Suaviza el efecto de hover */
 }
 
 .card {
     background-color: white;
-    /* opacity: 0.9; */ /* Comentado para mejorar la visibilidad */
     border-radius: 12px;
     padding: 20px;
     max-width: 400px;
@@ -47,10 +45,17 @@ button:hover, a:hover {
 .btn-primary {
     background-color: #007aff;
     border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Suaviza cambios de color y transformaciones */
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Aumenta suavemente el tamaño del botón */
+    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.4); /* Sombra al pasar el mouse */
+}
+
+.btn-primary:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
 }
 
 .input-group-text {

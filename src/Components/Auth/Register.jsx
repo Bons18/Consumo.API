@@ -2,7 +2,7 @@ import { useState } from "react";
 import useHook from "./Hooks/Hooks";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
-import { FaUser, FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa"; // Se añade FaUserCircle para el icono superior
+import { FaUser, FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa"; 
 import Swal from 'sweetalert2';
 import './Register.css';
 
@@ -18,7 +18,6 @@ const Register = () => {
         e.preventDefault();
         onHandleChange({ nombre, correo, contrasena });
         
-        // Alerta de confirmación
         Swal.fire({
             title: 'Registro exitoso',
             text: "Tu cuenta ha sido creada con éxito.",
@@ -33,16 +32,14 @@ const Register = () => {
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px', border: 'none' }}>
+            <Card className="shadow-lg animate__animated animate__fadeIn" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px', border: 'none' }}>
                 <Card.Body className="p-5">
-                    {/* Icono de usuario encima del título */}
                     <div className="d-flex justify-content-center mb-4">
                         <FaUserCircle size={50} className="text-primary" />
                     </div>
                     <h3 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Crea una Cuenta</h3>
                     <p className="text-center text-muted mb-4">Regístrate para empezar</p>
                     <Form onSubmit={onRegister}>
-                        {/* Campo de nombre con icono */}
                         <Form.Group className="mb-4" controlId="formNombre">
                             <Form.Label>Nombre Completo</Form.Label>
                             <InputGroup>
@@ -55,12 +52,11 @@ const Register = () => {
                                     value={nombre}
                                     onChange={(e) => setNombre(e.target.value)}
                                     required
-                                    className="rounded-pill border-0 shadow-sm"
+                                    className="rounded-pill border-0 shadow-sm animate__animated animate__fadeIn"
                                 />
                             </InputGroup>
                         </Form.Group>
 
-                        {/* Campo de correo con icono */}
                         <Form.Group className="mb-4" controlId="formCorreoRegistro">
                             <Form.Label>Correo Electrónico</Form.Label>
                             <InputGroup>
@@ -73,12 +69,11 @@ const Register = () => {
                                     value={correo}
                                     onChange={(e) => setCorreo(e.target.value)}
                                     required
-                                    className="rounded-pill border-0 shadow-sm"
+                                    className="rounded-pill border-0 shadow-sm animate__animated animate__fadeIn"
                                 />
                             </InputGroup>
                         </Form.Group>
 
-                        {/* Campo de contraseña con icono */}
                         <Form.Group className="mb-4" controlId="formContrasenaRegistro">
                             <Form.Label>Contraseña</Form.Label>
                             <InputGroup>
@@ -91,7 +86,7 @@ const Register = () => {
                                     value={contrasena}
                                     onChange={(e) => setContrasena(e.target.value)}
                                     required
-                                    className="rounded-pill border-0 shadow-sm"
+                                    className="rounded-pill border-0 shadow-sm animate__animated animate__fadeIn"
                                 />
                             </InputGroup>
                         </Form.Group>
@@ -99,7 +94,7 @@ const Register = () => {
                         <Button 
                             variant="primary" 
                             type="submit" 
-                            className="w-100 rounded-pill py-2 shadow"
+                            className="w-100 rounded-pill py-2 shadow animate__animated animate__fadeIn"
                             style={{ fontWeight: 'bold' }}
                         >
                             Registrarse

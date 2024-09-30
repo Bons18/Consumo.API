@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import useHook from "./Hooks/Hooks";
 import { UseLoginContext } from "../Context/LoginContext";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
-import { FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa"; // Importa el ícono aquí
+import { FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import './Login.css';
 
@@ -15,6 +15,14 @@ const Login = () => {
 
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
+
+    useEffect(() => {
+        // Se aplica animación de entrada al componente
+        const card = document.querySelector('.card');
+        if (card) {
+            card.classList.add('animate');
+        }
+    }, []);
 
     const onLogin = (e) => {
         e.preventDefault();
@@ -73,11 +81,10 @@ const Login = () => {
 
     return (
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Card className="shadow-lg" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px' }}>
+            <Card className="shadow-lg card" style={{ maxWidth: '400px', width: '100%', borderRadius: '12px' }}>
                 <Card.Body className="p-5">
-                    {/* Aquí se agrega el ícono */}
                     <div className="text-center mb-3">
-                        <FaUserCircle size={60} color="#0d6efd" /> {/* Tamaño y color del ícono */}
+                        <FaUserCircle size={60} color="#0d6efd" />
                     </div>
                     <h3 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Bienvenido</h3>
                     <p className="text-center text-muted mb-4">Inicia sesión para continuar</p>

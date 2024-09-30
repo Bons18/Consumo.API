@@ -1,10 +1,10 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('/imagen.jpg');
+    background-image: url('/imagen4.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Fija la imagen de fondo */
+    background-attachment: fixed;
     color: #333;
     height: 100vh;
     margin: 0;
@@ -14,17 +14,25 @@ h3 {
     color: #007aff;
 }
 
-.custom-alert {
+.card {
+    background-color: white;
+    opacity: 0.9;
     border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto; 
+    animation: fadeIn 0.5s ease-in-out; /* Suaviza la aparición de la tarjeta */
 }
 
-.alert-title {
-    font-weight: bold;
-    color: #007aff;
-}
-
-.alert-content {
-    color: #555;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Eleva ligeramente */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 button, input, a {
@@ -35,22 +43,20 @@ button:hover, a:hover {
     transform: scale(1.05);
 }
 
-.card {
-    background-color: white;
-    opacity: 0.9;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 400px;
-    margin: auto; 
-}
-
 .btn-primary {
     background-color: #007aff;
     border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Suaviza cambios de color y transformaciones */
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Aumenta suavemente el tamaño del botón */
+    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.4); /* Sombra al pasar el mouse */
+}
+
+.btn-primary:active {
+    transform: scale(0.95); /* Reduce el tamaño al hacer clic */
 }
 
 .input-group-text {
@@ -60,6 +66,7 @@ button:hover, a:hover {
 
 .form-control {
     border: 1px solid #ccc;
+    transition: border-color 0.2s ease; /* Suaviza la transición del borde */
 }
 
 .form-control:focus {
