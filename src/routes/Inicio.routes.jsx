@@ -3,7 +3,9 @@ import { Link, Outlet } from "react-router-dom";
 import { UseLoginContext } from "../Components/Context/LoginContext";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import Swal from 'sweetalert2';
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Asegúrate de importar Font Awesome
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
+import './Inicio.routes.css'; 
+
 
 const InicioRouters = () => {
     const { login, isLogin, onLogOut } = useContext(UseLoginContext);
@@ -46,12 +48,12 @@ const InicioRouters = () => {
     };
 
     const handleNavItemClick = () => {
-        setNavExpanded(false); // Ocultar la barra de navegación
+        setNavExpanded(false);
     };
 
     return (
         <>
-            <Navbar expanded={navExpanded} expand="lg" className="bg-light shadow-sm py-3 custom-navbar">
+            <Navbar expanded={navExpanded} expand="lg" className="bg-white shadow-sm py-3 custom-navbar">
                 <Container fluid>
                     <Navbar.Toggle
                         aria-controls="basic-navbar-nav"
@@ -63,7 +65,6 @@ const InicioRouters = () => {
                                 src="https://cdn-icons-png.flaticon.com/512/660/660611.png"
                                 width="40"
                                 height="40"
-                                /*className="rounded-circle me-2" */
                                 className="me-2"
                                 alt="Logo"
                             />
@@ -88,8 +89,8 @@ const InicioRouters = () => {
                                         key={index}
                                         as={Link}
                                         to={item.path}
-                                        className="text-primary mx-2 fw-semibold"
-                                        onClick={handleNavItemClick} // Ocultar al hacer clic
+                                        className="text-primary mx-2 fw-semibold nav-item"
+                                        onClick={handleNavItemClick}
                                     >
                                         <i className={`${item.icon} me-1`}></i>
                                         {item.title}

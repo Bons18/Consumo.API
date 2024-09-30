@@ -1,0 +1,29 @@
+.custom-navbar {
+    transition: background-color 0.3s ease;
+}
+
+.custom-navbar:hover {
+    background-color: #f8f9fa; /* Cambia el color al pasar el mouse */
+}
+
+.nav-item {
+    transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #0056b3; /* Color del texto al pasar el mouse */
+}
+
+.navbar-brand img {
+    border-radius: 50%; /* Hace que el logo sea redondo */
+}
+
+/* Estilo del botón de logout */
+.btn-outline-danger {
+    transition: all 0.3s;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545; /* Color de fondo al pasar el mouse */
+    color: white; /* Color del texto al pasar el mouse */
+}
