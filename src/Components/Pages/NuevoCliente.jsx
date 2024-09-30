@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import './NuevoClienteForm.css';
+import "../../styles/NuevoCliente.css"; 
 
 const NuevoClienteForm = ({ onAgregarCliente }) => {
     const [documentoCliente, setDocumentoCliente] = useState('');
@@ -37,7 +37,6 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                 confirmButtonText: 'Aceptar',
             });
 
-            // Limpiar los campos del formulario
             setDocumentoCliente('');
             setNombreCompleto('');
             setCelular('');
@@ -56,7 +55,7 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
     };
 
     const verAPI = () => {
-        window.open('https://bank-api-ukci.onrender.com/', '_blank'); // Abre la URL en una nueva pestaña
+        window.open('https://bank-api-ukci.onrender.com/', '_blank');
     };
 
     return (
@@ -111,7 +110,7 @@ const NuevoClienteForm = ({ onAgregarCliente }) => {
                 </Button>
 
                 <Button 
-                    variant="warning" // Color amarillo para el botón "Ver API"
+                    variant="warning"
                     className="mt-3 w-100" 
                     onClick={verAPI} 
                 >

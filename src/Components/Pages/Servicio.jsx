@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap';
 import { FaInfoCircle } from 'react-icons/fa';
-import './Servicios.css'; // Estilos personalizados
+import "../../styles/Servicios.css";
 
 const Servicios = () => {
     const [showModal, setShowModal] = useState(false);
@@ -20,10 +20,10 @@ const Servicios = () => {
     return (
         <Container fluid className="bg-light" style={{ minHeight: '100vh', paddingTop: '50px' }}>
             <h1 className="text-center mb-5 fw-bold text-dark" style={{
-                fontFamily: 'Poppins, sans-serif', // Aplicar fuente Poppins
-                fontWeight: '700', // Negrita
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', // Sombra de texto
-                fontSize: '2.5rem', // Tamaño de la fuente
+                fontFamily: 'Poppins, sans-serif', 
+                fontWeight: '700', 
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)', 
+                fontSize: '2.5rem', 
             }}>
                 Nuestros Servicios
             </h1>

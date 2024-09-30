@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
 import { FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa";
 import Swal from 'sweetalert2';
-import './Login.css';
+import "../../styles/Login.css";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -17,7 +17,6 @@ const Login = () => {
     const [contrasena, setContrasena] = useState("");
 
     useEffect(() => {
-        // Se aplica animación de entrada al componente
         const card = document.querySelector('.card');
         if (card) {
             card.classList.add('animate');

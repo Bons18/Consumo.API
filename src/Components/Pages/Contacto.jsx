@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Alert, Card } from 'react-bootstrap'
 import { FaUser, FaEnvelope, FaComment } from 'react-icons/fa';
 import { BsFillTelephoneFill, BsClockFill } from 'react-icons/bs';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
-import './Contacto.css'; // Estilos personalizados
+import "../../styles/Contacto.css";
 
 const Mapa = () => {
     const [map, setMap] = useState(null);
@@ -16,7 +16,7 @@ const Mapa = () => {
         script.async = true;
         script.onload = () => {
             const mapInstance = new window.google.maps.Map(document.getElementById('map'), {
-                center: { lat: 37.7749, lng: -122.4194 }, // San Francisco
+                center: { lat: 37.7749, lng: -122.4194 },
                 zoom: 12,
             });
             setMap(mapInstance);
@@ -29,7 +29,7 @@ const Mapa = () => {
                 const place = autocompleteInstance.getPlace();
                 if (place.geometry) {
                     mapInstance.setCenter(place.geometry.location);
-                    mapInstance.setZoom(15); // Aumenta el zoom al hacer una búsqueda
+                    mapInstance.setZoom(15);
                     new window.google.maps.Marker({
                         position: place.geometry.location,
                         map: mapInstance,
@@ -42,14 +42,13 @@ const Mapa = () => {
         document.head.appendChild(script);
 
         return () => {
-            document.head.removeChild(script); // Limpia el script al desmontar
+            document.head.removeChild(script);
         };
     }, []);
 
-    // Función para buscar al presionar "Enter"
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // Previene el comportamiento por defecto del formulario
+            e.preventDefault();
             const place = autocomplete.getPlace();
             if (place && place.geometry) {
                 map.setCenter(place.geometry.location);
@@ -59,7 +58,6 @@ const Mapa = () => {
                     map: map,
                 });
             } else {
-                // Realiza una búsqueda manual si no hay lugar seleccionado
                 const geocoder = new window.google.maps.Geocoder();
                 geocoder.geocode({ address: searchInput }, (results, status) => {
                     if (status === 'OK' && results[0]) {
@@ -90,9 +88,9 @@ const Mapa = () => {
                 placeholder="Buscar ubicación"
                 className="form-control mb-3"
                 style={{ borderRadius: '10px', padding: '10px' }}
-                onKeyPress={handleKeyPress} // Agrega el manejador de eventos
+                onKeyPress={handleKeyPress}
                 value={searchInput}
-                onChange={handleInputChange} // Manejador de cambio para el input
+                onChange={handleInputChange}
             />
             <div id="map" style={{ width: '100%', height: '250px', borderRadius: '10px' }}></div>
         </div>
@@ -201,7 +199,6 @@ const Contacto = () => {
                 </Col>
             </Row>
 
-            {/* Sección de Información Adicional */}
             <Row className="mt-5 text-center">
                 <Col md={8} lg={6} className="mx-auto">
                     <h2 className="fw-bold" style={{ color: '#333' }}>¿Por qué contactarnos?</h2>
@@ -226,27 +223,22 @@ const Contacto = () => {
                         </div>
                     </div>
 
-                    <h5 className="fw-bold">Síguenos en nuestras redes</h5>
-                    <div className="d-flex justify-content-center">
-                        <a href="#" className="text-decoration-none me-4">
+                    <h5 className="fw-bold">Síguenos en Redes Sociales</h5>
+                    <div className="d-flex justify-content-center mb-4">
+                        <a href="#" className="me-3 text-decoration-none text-primary">
                             <FaFacebook size={30} />
                         </a>
-                        <a href="#" className="text-decoration-none me-4">
+                        <a href="#" className="me-3 text-decoration-none text-primary">
                             <FaTwitter size={30} />
                         </a>
-                        <a href="#" className="text-decoration-none">
+                        <a href="#" className="text-decoration-none text-primary">
                             <FaInstagram size={30} />
                         </a>
                     </div>
                 </Col>
             </Row>
 
-            {/* Mapa */}
-            <Row className="mt-5">
-                <Col md={8} lg={6} className="mx-auto">
-                    <Mapa />
-                </Col>
-            </Row>
+            <Mapa />
         </Container>
     );
 };

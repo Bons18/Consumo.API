@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Container, Card, InputGroup } from 'react-bootstrap';
 import { FaUser, FaEnvelope, FaLock, FaUserCircle } from "react-icons/fa"; 
 import Swal from 'sweetalert2';
-import './Register.css';
+import "../../styles/Register.css";
 
 const Register = () => {
     const navigate = useNavigate();

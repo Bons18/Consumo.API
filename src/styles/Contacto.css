@@ -1,15 +1,14 @@
 .map-container {
-    margin-bottom: 20px; /* Espacio debajo del mapa */
-    padding: 0; /* Asegúrate de que no haya padding extra */
+    margin-bottom: 20px;
+    padding: 0;
 }
 
-/* El resto de tu CSS */
 body {
     background-color: #f7f7f7;
 }
 
 .container {
-    padding: 0; /* Sin padding general */
+    padding: 0;
 }
 
 .card {
@@ -17,7 +16,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    margin-top: 0; /* Sin margen superior */
+    margin-top: 0;
 }
 
 .card:hover {
@@ -36,7 +35,7 @@ button:hover {
 
 h1, h2, h5 {
     color: #333;
-    margin-top: 0; /* Sin margen superior */
+    margin-top: 0;
 }
 
 .text-muted {
@@ -55,7 +54,6 @@ h1, h2, h5 {
     margin-bottom: 2rem;
 }
 
-/* Mejorar el estilo del formulario */
 input, textarea {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -68,12 +66,11 @@ input:focus, textarea:focus {
     box-shadow: 0 0 5px rgba(0, 122, 255, 0.5);
 }
 
-/* Estilo para el iframe */
 iframe {
     display: block;
     width: 100%;
     border: none;
-    margin-top: 0; /* Sin margen superior */
+    margin-top: 0;
 }
 
 @media (max-width: 768px) {

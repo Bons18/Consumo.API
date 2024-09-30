@@ -1,0 +1,19 @@
+{
+  "root": "dist/",
+  "routes": {
+    "/**": "index.html"
+  },
+  "headers": {
+    "/**": {
+      "Cache-Control": "max-age=31536000, immutable",
+      "Content-Encoding": "gzip",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "Content-Security-Policy": "default-src 'self'; script-src 'self' https://apis.google.com; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "no-referrer"
+    }
+  },
+  "error_page": "404.html"
+}

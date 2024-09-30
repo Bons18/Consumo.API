@@ -2,10 +2,9 @@ import React from 'react';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { FaChevronRight, FaShieldAlt, FaMoneyBillWave, FaPiggyBank, FaChartLine, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { BsTwitterX } from "react-icons/bs"; 
-import { motion } from 'framer-motion'; // Importar Framer Motion para animaciones
-import './inicio.css'; 
+import { motion } from 'framer-motion';
+import "../../styles/inicio.css";
 
-// Variantes para las animaciones con Framer Motion
 const fadeIn = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -32,7 +31,6 @@ const ServiceCard = ({ icon: Icon, title, description }) => (
 const Inicio = () => {
     return (
         <div className="py bg-light">
-            {/* Sección principal con animación */}
             <motion.div
                 className="container-fluid text-center py-5 bg-primary text-white"
                 initial="hidden"
@@ -78,7 +76,6 @@ const Inicio = () => {
                 </Row>
             </motion.div>
 
-            {/* Sección de servicios con animaciones */}
             <Container fluid className="py-5">
                 <motion.h2 
                     className="text-center mb-5 text-primary fw-bold"
@@ -104,7 +101,6 @@ const Inicio = () => {
                 </Row>
             </Container>
 
-            {/* Sección de inversión con animación */}
             <Container fluid className="py-5 bg-light">
                 <Row className="justify-content-center">
                     <Col md={10}>
@@ -164,7 +160,6 @@ const Inicio = () => {
                 </Row>
             </Container>
 
-            {/* Sección final de CTA con animaciones */}
             <motion.div
                 className="container-fluid text-center py-5 bg-primary text-white"
                 initial="hidden"
@@ -194,7 +189,6 @@ const Inicio = () => {
                 </Row>
             </motion.div>
 
-            {/* Footer con iconos animados */}
             <footer className="bg-dark text-white py-4 mt-auto">
                 <Container>
                     <Row>
